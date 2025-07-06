@@ -31,3 +31,5 @@ docker compose up -d
 chown 3000:3000 data/ -R && chown 3000:3000 conf/ -R # Very important, change owner of data dir to rocketmq user.
 docker compose up -d
 ```
+
+Console will be availabe at http://vm1-ip:8082
