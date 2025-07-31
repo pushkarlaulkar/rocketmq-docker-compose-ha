@@ -7,12 +7,15 @@ services:
       - 10909:10909
       - 10911:10911
       - 10912:10912
+    environment:
+      - NAMESRV_ADDR=10.66.64.4:9876;10.66.64.5:9876
     volumes:
       - ./conf/broker-a-slave.conf:/home/rocketmq/rocketmq-5.3.2/conf/broker.conf
       - ./data/broker-a-slave/store:/home/rocketmq/store
     networks:
       - rocketmq
     command: sh mqbroker -c /home/rocketmq/rocketmq-5.3.2/conf/broker.conf
+    
   broker-b-slave:
     image: apache/rocketmq:5.3.2
     container_name: broker-b-slave
@@ -20,13 +23,15 @@ services:
       - 10919:10919
       - 10921:10921
       - 10922:10922
+    environment:
+      - NAMESRV_ADDR=10.66.64.4:9876;10.66.64.5:9876
     volumes:
       - ./conf/broker-b-slave.conf:/home/rocketmq/rocketmq-5.3.2/conf/broker.conf
       - ./data/broker-b-slave/store:/home/rocketmq/store
     networks:
       - rocketmq
-    # network_mode: "bridge"
     command: sh mqbroker -c /home/rocketmq/rocketmq-5.3.2/conf/broker.conf
+    
 networks:
   rocketmq:
     driver: bridge
