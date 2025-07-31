@@ -8,6 +8,7 @@ services:
     networks:
       - rocketmq
     command: sh mqnamesrv
+    
   broker-b-master:
     image: apache/rocketmq:5.3.2
     container_name: broker-b-master
@@ -15,12 +16,15 @@ services:
       - 10909:10909
       - 10911:10911
       - 10912:10912
+    environment:
+      - NAMESRV_ADDR=10.66.64.4:9876;10.66.64.5:9876
     volumes:
       - ./conf/broker-b-master.conf:/home/rocketmq/rocketmq-5.3.2/conf/broker.conf
       - ./data/broker-b-master/store:/home/rocketmq/store
     networks:
       - rocketmq
     command: sh mqbroker -c /home/rocketmq/rocketmq-5.3.2/conf/broker.conf
+    
 networks:
   rocketmq:
     driver: bridge
