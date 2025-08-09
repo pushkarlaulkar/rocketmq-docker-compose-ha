@@ -3,6 +3,7 @@ services:
   broker-a-slave:
     image: apache/rocketmq:5.3.2
     container_name: broker-a-slave
+    restart: always
     ports:
       - 10909:10909
       - 10911:10911
@@ -19,6 +20,7 @@ services:
   broker-b-slave:
     image: apache/rocketmq:5.3.2
     container_name: broker-b-slave
+    restart: always
     ports:
       - 10919:10919
       - 10921:10921
