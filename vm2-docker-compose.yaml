@@ -3,6 +3,7 @@ services:
   namesrv2:
     image: apache/rocketmq:5.3.2
     container_name: namesrv2
+    restart: always
     ports:
       - 9876:9876
     networks:
@@ -12,6 +13,7 @@ services:
   broker-b-master:
     image: apache/rocketmq:5.3.2
     container_name: broker-b-master
+    restart: always
     ports:
       - 10909:10909
       - 10911:10911
